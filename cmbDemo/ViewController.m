@@ -169,7 +169,8 @@
 }
 
 -(void)doWiggle:(UIView *)touchView startPoint:(NSString *)string{
-    
+   
+    CGFloat angle=0.5;  // angle=0.5 向左，angle=-0.5向右边
     CALayer *touchedLayer = [touchView layer];
     float xpoint=[string floatValue];
     const CGFloat boneScale = 1;
@@ -180,7 +181,7 @@
     touchedLayer.bounds = CGRectMake(0,0,122,88);
     touchedLayer.transform = scale;
     CABasicAnimation* r1 = [CABasicAnimation animationWithKeyPath:@"transform"];
-    CATransform3D rot1 = CATransform3DMakeRotation(0.5, 0,0,1);
+    CATransform3D rot1 = CATransform3DMakeRotation(angle, 0,0,1);
     rot1 = CATransform3DConcat(rot1, touchedLayer.transform);
     r1.toValue = [NSValue valueWithCATransform3D:rot1];
     r1.autoreverses = YES;
